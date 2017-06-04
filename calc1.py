@@ -31,7 +31,7 @@ class Token(object):
 class Interpreter(object):
     def __init__(self, text):
         # client string input, e.g. "3+5"
-        self.text = dtext.replace(" ", "")
+        self.text = text.replace(" ", "")
         # self.pos is an index into self.text
         self.pos = 0
         # current token instance
@@ -39,12 +39,6 @@ class Interpreter(object):
 
     def error(self):
         raise Exception('Error parsing input')
-
-    def advance(self):
-        """ Advance the 'pos' pointer and set the 'current_char' variable."""
-        self.pos += 1
-        if self.pos > lens(self.text) - 1:
-            self.current_char = self.text[self.pos]
 
     def get_next_token(self):
         """Lexical analyzer (also known as scanner or tokenizer)
