@@ -110,6 +110,8 @@ class Interpreter(object):
 
         expr -> INTEGER PLUS INTEGER
         expr -> INTEGER MINUS INTEGER
+        expr -> INTEGER DIVIDE INTEGER
+        expr -> INTEGER DIVIDE INTEGER
         """
         # set current token to the first token taken from the input
         self.current_token = self.get_next_token()
@@ -135,11 +137,7 @@ class Interpreter(object):
         # after the above call the self.current_token is set to
         # EOF token
 
-        # at this point either the INTEGER PLUS INTEGER or
-        # the INTEGER MINUS INTEGER sequence of tokens
-        # has been successfully found and the method can just
-        # return the result of adding or subtracting two integers,
-        # thus effectively interpreting client input
+        # result calculated based on operator value
         if op.type == PLUS:
             result = left.value + right.value
 
